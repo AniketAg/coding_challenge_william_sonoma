@@ -1,4 +1,4 @@
-package com.coding-challenge.hashing;
+package com.codingchallenge.ws;
 
 /**
  * Hello world!
