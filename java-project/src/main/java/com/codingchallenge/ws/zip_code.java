@@ -1,7 +1,4 @@
 package com.codingchallenge.ws;
-
-import java.text.DecimalFormat;
-
 /**
  * 
  * @author aniket
@@ -35,15 +32,9 @@ public class zip_code implements Comparable<zip_code>
 	public zip_code(String input) throws zip_exception
 	{
 		String[] range = input.split(",");
-		if(range.length  != 2) 
-		{
-			throw new zip_exception("["+input+"] is not a valid input it should contain exactly 2 parts upper and lower bound zip codes separated with comma");
-		}
-		
+		//if(range.length!= 2) throw new zip_exception("["+input+"] is not a valid input it should contain exactly 2 parts upper and lower bound zip codes separated with comma");
 		if(range[0].length() != 5 || range[1].length() != 5) 
-		{
-			throw new zip_exception("["+input + "] is Not Valid Input, both zip code length should be 5 digits");
-		}
+			throw new zip_exception("["+input + "] is Not Valid Input"); //both zip code length should be 5 digits
 		try 
 		{
 			this.start = Integer.parseInt(range[0]);
@@ -51,17 +42,13 @@ public class zip_code implements Comparable<zip_code>
 		}
 		catch (Exception e) 
 		{
-			throw new zip_exception("["+input + "] is Not Valid Input, both zip codes should be numeric.");
+			throw new zip_exception("["+input + "] is Not Valid Input"); //both zip codes should be numeric
 		}
-		
 		if(start > end) 
-		{
-			throw new zip_exception("["+input + "] is Not  Valid Input, Start Zip Code should be smaller than End Zip Code.");
-		}
-		
+			throw new zip_exception("["+input + "] is Not  Valid Input");// Start Zip Code should be smaller than End Zip Code
+			
 		this.zip_range = "["+start+","+end+"]";		
 	}
-
 	/**
 	 * @return the zip_range
 	 */
@@ -69,7 +56,6 @@ public class zip_code implements Comparable<zip_code>
 	{
 		return zip_range;
 	}
-
 	/**
 	 * @param zip_range the zip_range to set
 	 */
@@ -77,7 +63,6 @@ public class zip_code implements Comparable<zip_code>
 	{
 		this.zip_range = zip_range;
 	}
-
 	/**
 	 * @return the start_zip
 	 */
@@ -85,7 +70,6 @@ public class zip_code implements Comparable<zip_code>
 	{
 		return start;
 	}
-
 	/**
 	 * @param start_zip the start_zip to set
 	 */
@@ -93,7 +77,6 @@ public class zip_code implements Comparable<zip_code>
 	{
 		this.start = start_zip;
 	}
-
 	/**
 	 * @return the end_zip
 	 */
@@ -101,7 +84,6 @@ public class zip_code implements Comparable<zip_code>
 	{
 		return end;
 	}
-
 	/**
 	 * @param end_zip the end_zip to set
 	 */
@@ -109,7 +91,6 @@ public class zip_code implements Comparable<zip_code>
 	{
 		this.end = end_zip;
 	}
-
 	@Override
 	public int hashCode() 
 	{
@@ -120,7 +101,6 @@ public class zip_code implements Comparable<zip_code>
 		result = prime * result + ((zip_range == null) ? 0 : zip_range.hashCode());
 		return result;
 	}
-
 	@Override
 	public boolean equals(Object obj) 
 	{
@@ -137,19 +117,10 @@ public class zip_code implements Comparable<zip_code>
 		else if (!zip_range.equals(other.zip_range)) return false;
 		return true;
 	}
-
-	@Override
-	public String toString() 
-	{
-		DecimalFormat format = new DecimalFormat("00000");
-		return "[" + format.format(start) +","+format.format(end)+"]";
-	}
-
 	public int compareTo(zip_code zip_range) 
 	{
 		return start-zip_range.get_lower_bound_zip();
 	}
-
 	/**
 	 * @return the new_range
 	 */
@@ -157,7 +128,6 @@ public class zip_code implements Comparable<zip_code>
 	{
 		return new_range;
 	}
-
 	/**
 	 * @param new_range the new_range to set
 	 */

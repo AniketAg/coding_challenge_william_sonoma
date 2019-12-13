@@ -1,9 +1,6 @@
 package com.codingchallenge.ws;
-
 import java.util.*;
-
 import com.codingchallenge.ws.zip_code;
-
 class zip_set extends TreeSet<zip_code> 
 {
 	private static final long serialVersionUID = 1L;	
@@ -36,7 +33,7 @@ public class zip_optimize
 
 			if(optimized_zipSet.size() > 0) 
 			{
-				zip_code range = checkRange(new_range,optimized_zipSet.last());
+				zip_code range = check_range(new_range,optimized_zipSet.last());
 				if(range != null) 
 				{
 					if(!range.new_range()) 	optimized_zipSet.pollLast();
@@ -48,30 +45,27 @@ public class zip_optimize
 		}
 		return optimized_zipSet;
 	}
-
 	/**
 	 * 
 	 * @param new_range
-	 * @param oldRange
+	 * @param old_range
 	 * @return
 	 */
-	private zip_code checkRange(zip_code new_range, zip_code oldRange) 
+	private zip_code check_range(zip_code new_range, zip_code old_range) 
 	{
 		zip_code range = null;
-		if(oldRange.get_upper_bound_zip() > new_range.get_upper_bound_zip()) 	return range;
-		if(oldRange.get_upper_bound_zip() < new_range.get_lower_bound_zip()) 
+		if(old_range.get_upper_bound_zip() > new_range.get_upper_bound_zip()) return range;
+		if(old_range.get_upper_bound_zip() < new_range.get_lower_bound_zip()) 
 		{
 			new_range.set_new_range(true);
 			return new_range;
 		}
-		
-		if(oldRange.get_upper_bound_zip() > new_range.get_lower_bound_zip()) 
+		if(old_range.get_upper_bound_zip() > new_range.get_lower_bound_zip()) 
 		{
-			oldRange.set_upper_bound_zip(new_range.get_upper_bound_zip());
-			oldRange.set_new_range(false);
+			old_range.set_upper_bound_zip(new_range.get_upper_bound_zip());
+			old_range.set_new_range(false);
 		}
-		
-		if(oldRange.get_upper_bound_zip() < new_range.get_lower_bound_zip()) 
+		if(old_range.get_upper_bound_zip() < new_range.get_lower_bound_zip()) 
 		{
 			new_range.set_new_range(true);
 			return new_range;
