@@ -9,7 +9,7 @@ public class App
 {
         public static void main(String[] args) 
         {
-            System.out.println("Enter your Input in this format [XXXXX,XXXXX],[XXXXX,XXXXX] \n");
+            System.out.println("Enter your Input in this format [XXXXX,XXXXX] [XXXXX,XXXXX] \n");
             Scanner scanner = new Scanner(System.in);
             String input = scanner.nextLine();
             zip_util util = new zip_util();

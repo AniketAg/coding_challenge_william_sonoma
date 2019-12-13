@@ -32,7 +32,8 @@ public class zip_code implements Comparable<zip_code>
 	public zip_code(String input) throws zip_exception
 	{
 		String[] range = input.split(",");
-		//if(range.length!= 2) throw new zip_exception("["+input+"] is not a valid input it should contain exactly 2 parts upper and lower bound zip codes separated with comma");
+		if(range.length!= 2) 
+		throw new zip_exception("["+input+"] is not a valid input it should contain exactly 2 parts upper and lower bound zip codes separated with comma");
 		if(range[0].length() != 5 || range[1].length() != 5) 
 			throw new zip_exception("["+input + "] is Not Valid Input"); //both zip code length should be 5 digits
 		try 

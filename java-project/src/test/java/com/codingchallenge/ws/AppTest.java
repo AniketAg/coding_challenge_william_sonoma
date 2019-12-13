@@ -3,22 +3,34 @@ package com.codingchallenge.ws;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
-
+import org.junit.*;
 /**
  * Unit test for simple App.
  */
-public class AppTest 
-    extends TestCase
+
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+
+
+public class AppTest extends App 
 {
-    /**
-     * Create the test case
-     *
-     * @param testName name of the test case
-     */
-    public AppTest( String testName )
+    
+    @Test
+    public void testCase1() 
     {
-        super( testName );
-    }
+		String input = "[94133,94133] [94200,94299] [94226,94399]";
+	    InputStream in = new ByteArrayInputStream(input.getBytes());
+	    System.setIn(in);
+		App.main(null);
+	}
+
+	@Test
+	public void testCase2() {
+		String input = "[94133,94133] [94100,94109] [94226,94399]";
+	    InputStream in = new ByteArrayInputStream(input.getBytes());
+	    System.setIn(in);
+		App.main(null);
+	}
 
     /**
      * @return the suite of tests being tested
