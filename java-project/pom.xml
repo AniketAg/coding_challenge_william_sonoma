@@ -27,8 +27,8 @@
   </dependency>
   <dependency>
     <groupId>org.junit.Assert</groupId>
-    <artifactId>junit</artifactId>
-    <version>${junit.jupiter.version}</version>
+    <artifactId>junit.assert</artifactId>
+    <version>${junit.assert.version}</version>
     <scope>test</scope>
 </dependency>
     <dependency>
